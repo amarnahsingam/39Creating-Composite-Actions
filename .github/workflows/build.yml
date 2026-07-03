@@ -1,18 +1,27 @@
-name: Java Build Using Composite Action
+name: Java Maven Build
 
 on:
+
   push:
-    branches: [ main ]
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
 
 jobs:
+
   build:
+
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Run Java Build Composite Action
+      - name: Execute Composite Action
         uses: ./.github/actions/java-build
         with:
-          java-version: '17'
+          java-version: "17"
